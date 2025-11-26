@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eng. Mohamad Omran | Personal Brand</title>
+  <meta name="description" content="Eng. Mohamad Omran — Engineer under construction. Digital operations, data support, and web administration." />
+
+  <style>
+    :root{
+      /* PURE BLACK THEME */
+      --bg: #000000;
+      --bg-soft:#0a0a0a;
+      --card:#0d0d0d;
+      --text:#ffffff;
+      --muted:#bdbdbd;
+      --brand:#ffffff;   /* keep it white for clean contrast */
+      --border: rgba(255,255,255,0.10);
+      --shadow: 0 10px 30px rgba(0,0,0,0.7);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a{ color: inherit; text-decoration: none; }
+
+    .container{
+      width: min(1100px, 92vw);
+      margin: 0 auto;
+    }
+    section{ padding: 90px 0; }
+    .grid{ display: grid; gap: 18px; }
+    .grid-3{ grid-template-columns: repeat(3, 1fr); }
+    .grid-2{ grid-template-columns: repeat(2, 1fr); }
+
+    /* Header */
+    header{
+      position: sticky;
+      top:0;
+      z-index: 50;
+      background: rgba(0,0,0,0.9);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 14px 0;
+    }
+    .logo{
+      display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:0.4px;
+    }
+    .logo img{
+      width:36px; height:36px; object-fit:contain; border-radius:8px;
+      border:1px solid var(--border); padding:4px; background:#000;
+    }
+    nav ul{
+      display:flex; gap:14px; list-style:none; padding:0; margin:0;
+      font-size: 14px; color: var(--muted);
+    }
+    nav a{ padding:8px 10px; border-radius:10px; }
+    nav a:hover{ background: var(--bg-soft); color: var(--text); }
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding: 12px 16px; border-radius: 12px; font-weight: 600; font-size: 14px;
+      border: 1px solid var(--border); background: var(--card); color: var(--text);
+      box-shadow: var(--shadow); transition: transform .15s ease, opacity .15s ease;
+    }
+    .btn:hover{ transform: translateY(-2px); }
+    .btn.primary{
+      background: #ffffff;
+      color:#000000; border:none;
+    }
+    .btn.ghost{ background: transparent; box-shadow:none; }
+
+    /* Hero */
+    .hero{ padding: 110px 0 70px; }
+    .hero-wrap{
+      display:grid; gap:28px; grid-template-columns: 1.2fr 0.8fr; align-items:center;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px; border:1px dashed var(--border); border-radius:999px;
+      color: var(--muted); font-size: 12px; background: rgba(255,255,255,0.02);
+    }
+    h1{
+      font-size: clamp(32px, 4vw, 52px);
+      line-height:1.15; margin: 12px 0;
+      letter-spacing: 0.3px;
+    }
+    .subtitle{
+      font-size: clamp(15px, 1.6vw, 18px);
+      color: var(--muted);
+      max-width: 60ch;
+    }
+    .hero-cta{ display:flex; gap:10px; margin-top: 18px; flex-wrap:wrap; }
+
+    .hero-card{
+      background: var(--card);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      display:grid; gap:12px;
+    }
+    .profile{
+      display:flex; gap:14px; align-items:center;
+    }
+    .avatar{
+      width:72px; height:72px; border-radius:14px;
+      background:#000; border:1px solid var(--border);
+      display:grid; place-items:center; overflow:hidden;
+    }
+    .avatar img{ width:100%; height:100%; object-fit:contain; padding:8px; }
+    .profile h3{ margin:0; font-size:18px; }
+    .profile p{ margin:0; color:var(--muted); font-size:13px; }
+
+    .stats{
+      display:grid; grid-template-columns: repeat(2,1fr); gap:10px;
+    }
+    .stat{
+      background: var(--bg-soft);
+      border:1px solid var(--border);
+      border-radius: 14px; padding: 12px;
+    }
+    .stat .num{ font-size:18px; font-weight:800; }
+    .stat .label{ font-size:12px; color:var(--muted); }
+
+    /* Sections */
+    .section-title{ font-size: 22px; margin:0 0 8px; }
+    .section-desc{
+      color: var(--muted); margin:0 0 18px; max-width: 70ch;
+    }
+
+    .card{
+      background: var(--card);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card h4{ margin: 4px 0 8px; font-size:16px; }
+    .muted{ color: var(--muted); }
+
+    .pill{
+      display:inline-block; font-size:12px; color: var(--muted);
+      padding:4px 8px; border:1px solid var(--border); border-radius:999px;
+      background: rgba(255,255,255,0.03);
+    }
+    .pills{ display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; }
+
+    /* Experience */
+    .exp-item{ display:grid; gap:6px; }
+    .exp-top{
+      display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;
+    }
+    .exp-role{ font-weight:700; }
+
+    /* Skills list */
+    .skills{ display:flex; flex-wrap:wrap; gap:8px; }
+
+    /* Contact */
+    .contact-wrap{
+      display:grid; grid-template-columns: 1fr 1fr; gap:18px;
+    }
+    label{ font-size: 13px; color: var(--muted); }
+    input, textarea{
+      width:100%; padding:12px 12px; margin-top:6px;
+      background: var(--bg-soft);
+      border:1px solid var(--border);
+      border-radius: 12px; color: var(--text);
+      outline: none;
+    }
+    textarea{ min-height:120px; resize: vertical; }
+    .contact-links{ display:grid; gap:10px; font-size:14px; }
+    .link-row{
+      display:flex; align-items:center; justify-content:space-between;
+      background: var(--bg-soft); border:1px solid var(--border);
+      padding:12px; border-radius:12px;
+    }
+
+    footer{
+      padding: 22px 0 40px; color: var(--muted); font-size: 13px;
+      border-top:1px solid var(--border);
+      background: #000;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero-wrap{ grid-template-columns: 1fr; }
+      .grid-3{ grid-template-columns: 1fr; }
+      .grid-2{ grid-template-columns: 1fr; }
+      .contact-wrap{ grid-template-columns: 1fr; }
+      nav ul{ display:none; }
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="container nav">
+    <div class="logo">
+      <!-- YOUR LOGO HERE -->
+      <img src="logo.jpg" alt="Mohamad Logo" />
+      <span>Mohamad Omran</span>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#offers">What I Do</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div>
+      <a class="btn ghost" href="#contact">Let’s Talk</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero container" id="top">
+    <div class="hero-wrap">
+      <div>
+        <div class="badge">Electronics Engineering Student • Digital Operations</div>
+        <h1>Eng. Mohamad Omran</h1>
+        <p class="subtitle">
+          Engineer under construction — building skills in tech, data, and digital media.
+          I combine accurate data work, reliable operations support, and hands-on website/social media administration.
+        </p>
+        <div class="hero-cta">
+          <a class="btn primary" href="#experience">View My Experience</a>
+          <a class="btn" href="#contact">Contact Me</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="profile">
+          <div class="avatar" aria-hidden="true">
+            <img src="logo.jpg" alt="Logo" />
+          </div>
+          <div>
+            <h3>Digital Operations + Data Support</h3>
+            <p>Based in Iraq • Open to opportunities</p>
+          </div>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <div class="num">4+ yrs</div>
+            <div class="label">Mixed Experience</div>
+          </div>
+          <div class="stat">
+            <div class="num">High</div>
+            <div class="label">Data Accuracy & Reporting</div>
+          </div>
+          <div class="stat">
+            <div class="num">Web + Social</div>
+            <div class="label">Platform Administration</div>
+          </div>
+          <div class="stat">
+            <div class="num">2026</div>
+            <div class="label">Expected Graduation (BSc)</div>
+          </div>
+        </div>
+
+        <div class="muted" style="font-size:13px;">
+          I’m always improving systems and helping teams stay organized through clean data and smooth digital workflows.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container grid grid-2">
+      <div class="card">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-desc">
+          I started working early in roles that required accuracy, communication, and digital organization — from call center support to managing office operations and social media platforms. Today, I’m studying Electronics Engineering while continuing to build practical skills in data handling, online administration, and digital workflow improvement.
+        </p>
+        <p class="muted">
+          I’m known for being a quick learner, detail-oriented, and dependable under pressure.
+        </p>
+      </div>
+
+      <div class="card">
+        <h4>Quick Highlights</h4>
+        <ul class="muted" style="margin:0; padding-left:18px;">
+          <li>Strong Excel reporting & inventory data tracking</li>
+          <li>Office and operations workflow support</li>
+          <li>Website content + social media coordination</li>
+          <li>Electronics Engineering (BSc), in progress</li>
+        </ul>
+        <div class="pills">
+          <span class="pill">Detail-Oriented</span>
+          <span class="pill">Fast Learner</span>
+          <span class="pill">Reliable</span>
+          <span class="pill">Team Support</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFERS -->
+  <section id="offers">
+    <div class="container">
+      <h2 class="section-title">What I Do</h2>
+      <p class="section-desc">The areas where I deliver the most value.</p>
+
+      <div class="grid grid-3">
+        <div class="card">
+          <h4>Data & Reporting</h4>
+          <p class="muted">
+            Organizing, entering, and maintaining large datasets with clean Excel reporting and reliable inventory records.
+          </p>
+          <div class="pills">
+            <span class="pill">Excel</span>
+            <span class="pill">Inventory</span>
+            <span class="pill">Monthly Audits</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h4>Office & Operations Support</h4>
+          <p class="muted">
+            Managing administrative tasks, improving workflow, and keeping daily operations smooth and efficient.
+          </p>
+          <div class="pills">
+            <span class="pill">Administration</span>
+            <span class="pill">Workflow</span>
+            <span class="pill">Coordination</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h4>Digital & Web Administration</h4>
+          <p class="muted">
+            Coordinating websites and social media content to strengthen online presence and audience engagement.
+          </p>
+          <div class="pills">
+            <span class="pill">CMS</span>
+            <span class="pill">Content</span>
+            <span class="pill">Social Media</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="container">
+      <h2 class="section-title">Experience Highlights</h2>
+      <p class="section-desc">A few roles that shaped my skills across data, operations, and digital platforms.</p>
+
+      <div class="grid">
+        <div class="card exp-item">
+          <div class="exp-top">
+            <div>
+              <div class="exp-role">Data Entry Clerk — Shopping Center</div>
+              <div class="muted">2025 – Present</div>
+            </div>
+            <span class="pill">Data / Inventory</span>
+          </div>
+          <p class="muted">
+            Handling high-volume sales & inventory data, conducting monthly checks, and building Excel reports to keep records accurate and up-to-date.
+          </p>
+        </div>
+
+        <div class="card exp-item">
+          <div class="exp-top">
+            <div>
+              <div class="exp-role">Office Manager & Digital Media Coordinator — Golden Phoenix</div>
+              <div class="muted">2023</div>
+            </div>
+            <span class="pill">Operations / Digital</span>
+          </div>
+          <p class="muted">
+            Managed websites and social platforms, improved internal workflow efficiency, and supported brand visibility through consistent digital coordination.
+          </p>
+        </div>
+
+        <div class="card exp-item">
+          <div class="exp-top">
+            <div>
+              <div class="exp-role">Call Center Representative — Medical Clinics</div>
+              <div class="muted">2019 – 2020</div>
+            </div>
+            <span class="pill">Support / Communication</span>
+          </div>
+          <p class="muted">
+            Supported multiple clinics by handling inquiries, scheduling, and maintaining accurate records with strong customer care.
+          </p>
+        </div>
+
+        <div class="card exp-item">
+          <div class="exp-top">
+            <div>
+              <div class="exp-role">Volunteer Web Administrator — University of Karbala</div>
+              <div class="muted">2018</div>
+            </div>
+            <span class="pill">Web Admin</span>
+          </div>
+          <p class="muted">
+            Updated official website content and improved navigation for better user experience.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container grid grid-2">
+      <div class="card">
+        <h2 class="section-title">Skills</h2>
+        <p class="section-desc">Core strengths I use to support teams and deliver clean results.</p>
+        <div class="skills">
+          <span class="pill">Data Entry</span>
+          <span class="pill">Database Management</span>
+          <span class="pill">Excel Reporting</span>
+          <span class="pill">Microsoft Office</span>
+          <span class="pill">Workflow Organization</span>
+          <span class="pill">Web Content Management</span>
+          <span class="pill">Social Media Admin</span>
+          <span class="pill">Communication</span>
+          <span class="pill">Problem Solving</span>
+          <span class="pill">Adaptability</span>
+          <span class="pill">Fast Learning</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h4>Tools</h4>
+        <div class="skills">
+          <span class="pill">Excel / Google Sheets</span>
+          <span class="pill">Word / PowerPoint</span>
+          <span class="pill">CMS (WordPress-like)</span>
+          <span class="pill">Meta / Instagram Tools</span>
+          <span class="pill">Email & Admin Systems</span>
+        </div>
+        <div style="height:10px"></div>
+        <h4>Languages</h4>
+        <div class="skills">
+          <span class="pill">Arabic — Native</span>
+          <span class="pill">English — Good Working Proficiency</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Contact</h2>
+      <p class="section-desc">Interested in collaboration or opportunities? Let’s talk.</p>
+
+      <div class="contact-wrap">
+        <form class="card" onsubmit="event.preventDefault(); alert('Thanks! Connect this form to EmailJS/Formspree when you publish.');">
+          <div style="display:grid; gap:12px;">
+            <div>
+              <label>Your Name</label>
+              <input type="text" placeholder="Enter your name" required />
+            </div>
+            <div>
+              <label>Your Email</label>
+              <input type="email" placeholder="Enter your email" required />
+            </div>
+            <div>
+              <label>Message</label>
+              <textarea placeholder="Write your message..." required></textarea>
+            </div>
+            <button class="btn primary" type="submit">Send Message</button>
+          </div>
+        </form>
+
+        <div class="card contact-links">
+          <div class="link-row">
+            <div>
+              <div style="font-weight:700;">Email</div>
+              <div class="muted">mohamad@m44m4m.com</div>
+            </div>
+            <a class="btn ghost" href="mailto:mohamad@m44m4m.com">Open</a>
+          </div>
+
+          <div class="link-row">
+            <div>
+              <div style="font-weight:700;">Phone / WhatsApp</div>
+              <div class="muted">+9647755882004</div>
+            </div>
+            <a class="btn ghost" href="https://wa.me/9647755882004" target="_blank" rel="noreferrer">Chat</a>
+          </div>
+
+          <div class="link-row">
+            <div>
+              <div style="font-weight:700;">Website</div>
+              <div class="muted">m44m4m.com</div>
+            </div>
+            <a class="btn ghost" href="https://m44m4m.com" target="_blank" rel="noreferrer">Visit</a>
+          </div>
+
+          <div class="link-row">
+            <div>
+              <div style="font-weight:700;">LinkedIn</div>
+              <div class="muted">Add your profile link</div>
+            </div>
+            <a class="btn ghost" href="#" onclick="alert('Replace with your LinkedIn link'); return false;">Add</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+    <div>© <span id="year"></span> Eng. Mohamad Omran. All rights reserved.</div>
+    <div class="muted">One-page Personal Brand Site.</div>
+  </div>
+</footer>
+
+<script>
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const id = a.getAttribute('href');
+      const el = document.querySelector(id);
+      if(!el) return;
+      e.preventDefault();
+      el.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+
+  // Year
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
